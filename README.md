@@ -8,3 +8,5 @@ exploration_ar.ipynb - notebook for exploring the AusReddit dataset
 exploration_notebook_ar - code base to drive the exploration_ar notebook
 
 requirements.txt - python package requirements for notebooks
+
+Note: remember to load the data from the correct path, i.e. where you downloaded/extracted the data to (the data folder is a good place)
