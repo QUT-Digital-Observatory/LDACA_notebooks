@@ -1209,13 +1209,13 @@ class Exploration:
     def _get_ram_status(self):
         process_mem = psutil.Process(os.getpid())
         mem_mb = process_mem.memory_info().rss / (1024 * 1024)
-        limit_mb =2048
-        percent = (mem_mb / limit_mb) * 100
-        
-        status = f"📊 Memory Usage: {mem_mb:.1f}MB / {limit_mb}MB ({percent:.1f}%)"
+        total_memory_mb = psutil.virtual_memory().total / (1024 * 1024)  # Dynamically fetch total system memory in MB
+        percent = (mem_mb / total_memory_mb) * 100
+
+        status = f"📊 Memory Usage: {mem_mb:.1f}MB / {total_memory_mb:.1f}MB ({percent:.1f}%)"
         if percent > 85:
             status += " ⚠️ WARNING: High usage! Please narrow your search."
-        return status        
+        return status             
 
 
 class NotebookGuard:
